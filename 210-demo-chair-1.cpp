@@ -15,7 +15,7 @@ public:
     Chair() {
         prices = new double[SIZE];
         //picking either 3 or 4 legs
-        legs = (rand() % (MAXLEG - MINLEG + 1)) + MAXLEG;
+        legs = (rand() % (MAXLEG - MINLEG + 1)) + MINLEG;
 
         for (int i = 0; i < SIZE; i++){
             //initializing prices array with a random double
@@ -68,14 +68,13 @@ int main() {
     cout << fixed << setprecision(2);
 
     //creating pointer to first chair object
+    //now using default constructor, which assigns private members random values
     Chair *chairPtr = new Chair;
-    chairPtr->setLegs(4);
-    chairPtr->setPrices(121.21, 232.32, 414.14);
     chairPtr->print();
 
-    //creating dynamic chair object with constructor
-    Chair *livingChair = new Chair(3);
-    livingChair->setPrices(525.25, 434.34, 252.52);
+    //creating dynamic chair object with constructor, now with 2 parameters
+    double price [SIZE] = {525.25, 434.34, 252.52};
+    Chair *livingChair = new Chair(3, price);
     livingChair->print();
     delete livingChair;
     livingChair = nullptr;
@@ -83,9 +82,10 @@ int main() {
     //creating dynamic array of chair objects
     Chair *collection = new Chair[SIZE];
     
-    
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < SIZE; i++){
+        cout << "boom" << endl;
         collection[i].print();
+    }
     
     return 0;
 }
