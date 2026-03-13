@@ -23,13 +23,20 @@ public:
             prices[i] = price;
         }
     }
-
-    //changing parameter constructor to include argument for array of doubles
-    Chair(int l, double pricearg []) {
-
+    //partial constructor
+    Chair(int l) {
+        prices = new double[SIZE];
         legs = l;
         for (int i = 0; i < SIZE; i++)
             prices[i] = 0;
+    }
+
+    //changing parameter constructor to include argument for array of doubles
+    Chair(int l, double pricearg []) {
+        prices = new double[SIZE];
+        legs = l;
+        for (int i = 0; i < SIZE; i++)
+            prices[i] = pricearg[i];
     }
 
     // setters and getters
@@ -75,12 +82,8 @@ int main() {
 
     //creating dynamic array of chair objects
     Chair *collection = new Chair[SIZE];
-    collection[0].setLegs(4);
-    collection[0].setPrices(441.41, 552.52, 663.63);
-    collection[1].setLegs(4);
-    collection[1].setPrices(484.84, 959.59, 868.68);
-    collection[2].setLegs(4);
-    collection[2].setPrices(626.26, 515.15, 757.57);
+    
+    
     for (int i = 0; i < SIZE; i++)
         collection[i].print();
     
