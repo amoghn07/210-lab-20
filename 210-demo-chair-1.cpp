@@ -14,15 +14,19 @@ public:
     // constructors
     Chair() {
         prices = new double[SIZE];
+        //picking either 3 or 4 legs
         legs = (rand() % (MAXLEG - MINLEG + 1)) + MAXLEG;
 
         for (int i = 0; i < SIZE; i++){
+            //initializing prices array with a random double
             double price = (rand() % (MAX-MIN+1) + MIN) / (double) 100;
             prices[i] = price;
         }
     }
-    Chair(int l) {
-        prices = new double[SIZE];
+
+    //changing parameter constructor to include argument for array of doubles
+    Chair(int l, double pricearg []) {
+
         legs = l;
         for (int i = 0; i < SIZE; i++)
             prices[i] = 0;
